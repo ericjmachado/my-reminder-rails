@@ -1,0 +1,26 @@
+<div class="modal-dialog" role="document">
+  <%= bootstrap_form_for(:reminder, method: "patch", :url => url_for(:controller => 'reminders', :action => 'update', id: @reminder.id) ) do |f| %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update reminder</h5>
+        <button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= f.text_field :name, required: true, maxlength: "30", value: @reminder.name %>
+        <%= f.color_field :color, required: true, value: @reminder.color %>
+        <%= f.datetime_field :date, value: @reminder.date.strftime('%Y-%m-%dT%H:%M'), required: true %>
+        <%= f.text_area :observation, value: @reminder.observation %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Delete",
+                    {:controller => :reminders, :action => 'destroy', :id => @reminder.id },
+                    :method => :delete, class: "btn btn-danger"
+        %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= f.submit "Save changes", :class => "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

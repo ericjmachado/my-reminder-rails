@@ -1,0 +1,69 @@
+<%= stylesheet_link_tag "reminders" %>
+
+<div class="container mt-5">
+  <% if flash[:errors] or flash[:notice] %>
+    <div class="messages mb-4">
+      <% unless flash[:errors].nil?  %>
+        <% flash[:errors].each do |error|%>
+          <div class="alert alert-danger m-2" role="alert">
+            <%= error %>
+          </div>
+        <% end %>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success m-2" role="alert">
+          <%= flash[:notice]  %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= month_calendar(attribute: :date, events: @reminders) do |date, reminders| %>
+    <div class="day-container" data-day="<%= date.to_s %>">
+      <%= date.day %>
+      <% if reminders.any? %>
+          <% reminders.each do |reminder| %>
+            <div class="reminder" style="background: <%= reminder.color %>" data-id="<%= reminder.id %>">
+              <%= reminder.name %> - <%= reminder.date.strftime('%H:%M') %>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="modal fade" id="modal-forms">
+
+</div>
+
+
+<script>
+  $(document).ready(() => {
+    const modalEl = $("#modal-forms")
+    $('.day-container').on("click", function(){
+        console.log("chamei errado")
+        let day = $(this).data('day');
+      $.ajax({
+        url: `<%= new_reminder_path %>?day=${day}`,
+        type: 'GET',
+        success: (data) => {
+          modalEl.html(data);
+          modalEl.modal('show')
+        }
+      });
+    });
+    $(".reminder").on("click", function (e) {
+        e.stopPropagation()
+        const id = $(this).data('id');
+        const route = `<%= edit_reminder_path(":id") %>`
+        $.ajax({
+          url: route.replace(':id', id),
+          type: 'GET',
+          success: (data) => {
+            modalEl.html(data);
+            modalEl.modal('show')
+          }
+        });
+    })
+  })
+</script>

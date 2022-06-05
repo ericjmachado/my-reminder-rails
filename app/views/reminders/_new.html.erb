@@ -1,0 +1,22 @@
+<div class="modal-dialog" role="document">
+  <%= bootstrap_form_for(:reminder, :url => url_for(:controller => 'reminders', :action => 'create') ) do |f| %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create reminder</h5>
+        <button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= f.text_field :name, required: true, maxlength: "30" %>
+        <%= f.color_field :color, required: true, value: "#FF0000" %>
+        <%= f.datetime_field :date, value: @day.strftime('%Y-%m-%dT%H:%M'), required: true %>
+        <%= f.text_area :observation %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= f.submit "Save changes", :class => "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
