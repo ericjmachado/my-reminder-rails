@@ -1,4 +1,6 @@
-# README
+# SETUP
+
+### This application is avaiable on https://my-reminder-test.herokuapp.com/
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -33,3 +35,10 @@ docker-compose up -d
 docker-compose exec app bundle exec rake db:setup db:migrate
 ```
 
+##### 4 - To run tests
+
+```
+docker-compose exec app rails credentials:edit --environment test
+docker-compose exec app rails db:setup db:migrate RAILS_ENV=test
+docker-compose exec app rake
+```
