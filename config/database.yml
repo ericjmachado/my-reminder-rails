@@ -27,6 +27,6 @@ test:
 
 production:
   <<: *default
-  database: calender
+  database: <%= ENV['POSTGRES_DATABASE'] || 'calender' %>
   username: <%= ENV.fetch("POSTGRES_USER") %>
   password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
