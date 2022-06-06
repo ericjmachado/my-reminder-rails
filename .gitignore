@@ -31,3 +31,8 @@
 .idea
 log/
 tmp/
+# Ignore application configuration
+/config/application.yml
+
+/config/credentials/production.key
+/config/credentials.yml.enc

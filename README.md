@@ -61,28 +61,3 @@ To deliver the exercise, you should clone this repository and work on a new bran
 
 ### Will I have access to the evaluation?
 By default we only send the result, however you can feel free to request the full evaluation and we will share it with you as well as the final score.
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

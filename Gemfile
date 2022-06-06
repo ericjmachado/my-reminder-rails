@@ -9,8 +9,7 @@ gem "rails", "~> 7.0.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -22,6 +21,7 @@ gem "simple_calendar", "~> 2.4"
 gem "bootstrap", "~> 5.1", ">= 5.1.3"
 gem "bootstrap_form", "~> 5.0"
 gem "jquery-rails"
+gem 'figaro'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

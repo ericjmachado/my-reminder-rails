@@ -3,9 +3,7 @@ RUN mkdir /app
 WORKDIR /app
 ADD . /app/
 RUN apt-get update -y
-RUN apt-get install build-essential \
-                    curl \
-                    sqlite3 \
-                    libsqlite3-dev -y
+RUN apt-get install build-essential libpq-dev nodejs -y
 RUN bundle install
-CMD bash -c "rails s -p 3000 -b '0.0.0.0' -e production"
+EXPOSE 3000
+CMD bash -c "rails credentials:edit && rails s -p 3000 -b '0.0.0.0' -e production"
