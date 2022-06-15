@@ -1,3 +1,5 @@
+## Avaiable on https://my-reminder-test.herokuapp.com/
+
 ## Instructions
 
 The goal of this exercise is to create both the backend and frontend of a calendar application using Ruby on Rails.

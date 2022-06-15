@@ -13,11 +13,25 @@
  *= require_tree .
  *= require_self
  */
-@import "simple_calendar";
 @import "bootstrap";
 @import "rails_bootstrap_forms";
 
 label.required:after {
   content: " *";
   @extend .text-danger;
+}
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-style: normal;
+  font-variant-ligatures: normal;
+  font-variant-caps: normal;
+  font-variant-numeric: normal;
+  font-variant-east-asian: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  line-height: normal;
+  font-family: Poppins, sans-serif;
 }

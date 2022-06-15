@@ -1,0 +1,57 @@
+$default-border-color: #d3d3d3;
+$size-flex: calc(100% / 7);
+$default-border-content: 1px solid $default-border-color;
+
+.calendar-body {
+  border: $default-border-content;
+  border-radius: 20px;
+  .calendar-header-days, .week-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    > div {
+      display: flex;
+      flex: 0 0 $size-flex;
+      max-width: $size-flex;
+    }
+  }
+  .calendar-header-days {
+    border-bottom: $default-border-content;
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      font-weight: bold;
+      &:not(:last-child) {
+        border-right: $default-border-content;
+      }
+    }
+  }
+  .week-container {
+    &:not(:last-child) {
+      border-bottom: $default-border-content;
+    }
+    .day {
+      padding: 5px 10px;
+      min-height: 100px;
+      &:not(:last-child) {
+        border-right: $default-border-content;
+      }
+      &.out-of-month {
+        * {
+          opacity: .4;
+        }
+      }
+      &.current-date {
+        span.date {
+          font-weight: bold;
+          color: #B00100;
+          &::after {
+            content: " *"
+          }
+        }
+      }
+    }
+  }
+}

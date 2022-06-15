@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     restart: always
-    container_name: "calender-web"
+    container_name: "calendar-web"
     volumes:
       - .:/app
     environment:

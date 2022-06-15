@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag "calendar" %>
+<div class="calendar-container">
+  <div class="calendar-header">
+    <%= link_to "Previous", calendar.url_for_previous_month %>
+    <span class="calendar-title">
+      <%= Date::MONTHNAMES[calendar.start_date.month] %> - <%= calendar.start_date.year %></span>
+    <%= link_to "Next", calendar.url_for_next_month %>
+  </div>
+  <div class="calendar-body">
+    <div class="calendar-header-days">
+      <% date_range.slice(0, 7).each do |day| %>
+        <div class="day-header"><%= Date::ABBR_DAYNAMES[day.wday] %></div>
+      <% end %>
+    </div>
+    <div class="calendar-days">
+      <% date_range.each_slice(7) do |week| %>
+        <div class="week-container">
+          <% week.each do |day| %>
+            <%= content_tag :div, class: calendar.day_classes(day) do %>
+              <% block.call day, calendar.data_ordered.fetch(day, [])  %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

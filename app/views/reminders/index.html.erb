@@ -18,9 +18,9 @@
     </div>
   <% end %>
 
-  <%= month_calendar(attribute: :date, events: @reminders) do |date, reminders| %>
-    <div class="day-container" data-day="<%= date.to_s %>">
-      <%= date.day %>
+  <%= calendar(attribute: :date, data: @reminders) do |date, reminders| %>
+    <div class="into-day-container" data-day="<%= date.to_s %>">
+      <span class="date"><%= date.day %></span>
       <% if reminders.any? %>
           <% reminders.each do |reminder| %>
             <div class="reminder" style="background: <%= reminder.color %>" data-id="<%= reminder.id %>">
@@ -40,7 +40,7 @@
 <script>
   $(document).ready(() => {
     const modalEl = $("#modal-forms")
-    $('.day-container').on("click", function(){
+    $('.into-day-container').on("click", function(){
         console.log("chamei errado")
         let day = $(this).data('day');
       $.ajax({
